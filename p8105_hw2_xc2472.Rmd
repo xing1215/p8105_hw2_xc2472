@@ -18,17 +18,17 @@ library(readxl)
 ## Mr. Trash Wheel dataset
 
 ```{r}
-trash_wheel = 
+trashwheel_data = 
   read_excel(path = "./data/Trash-Wheel-Collection-Totals-8-6-19.xlsx", 
              sheet = "Mr. Trash Wheel", 
              range = "A2:N408")
 
-trash_wheel = janitor::clean_names(trash_wheel)
+trashwheel_data = janitor::clean_names(trashwheel_data)
 
-trash_wheel = drop_na(trash_wheel, dumpster)
+trashwheel_data = drop_na(trashwheel_data, dumpster)
 
-trash_wheel = mutate(trash_wheel, 
-  sports_balls = round(sports_balls, digits = 0),
+trashwheel_data = mutate(trashwheel_data, 
+  sports_balls = round(sports_balls),
   sports_balls = as.integer(sports_balls)
 )
 ```
@@ -67,13 +67,12 @@ Combine the precipitation datasets and convert "month" variable to character var
 
 ```{r}
 prcp_combine = bind_rows(prcp17, prcp18)
-
+# haven't change the month variable
 
 ```
 
 **Description**
 
-(use reasonal varaible names), (month.name?)
 
 # Problem 2
 
