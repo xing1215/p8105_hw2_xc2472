@@ -64,9 +64,10 @@ prcp18_data = drop_na(prcp18_data, total) %>%
 Combine the precipitation datasets and convert "month" variable to character variable
 
 ```{r}
-prcp_combine_data = bind_rows(prcp17_data, prcp18_data)
-
-# haven't change the variable month
+prcp_combine_data = 
+  bind_rows(prcp17_data, prcp18_data) %>% 
+  mutate(
+    month = month.name[month])
 ```
 
 **Description**
@@ -87,13 +88,7 @@ pols_month =
 create a president variable and drop the "day" variable
 
 ```{r}
-#this is not right
-pols_month = pivot_longer(pols_month, 
-                          cols = starts_with("prez"), 
-                          names_to = "president",
-                          names_prefix = "prez_",
-                          values_to = "value"
-                          )
+# dont know how to create president
 pols_month = select(pols_month, -day)
 ```
 
