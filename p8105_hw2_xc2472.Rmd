@@ -15,7 +15,7 @@ library(readxl)
 
 # Problem 1
 
-## Import the Mr. Trash Wheel dataset
+## Mr. Trash Wheel dataset
 
 ```{r}
 trash_wheel = 
@@ -34,7 +34,9 @@ trash_wheel = mutate(trash_wheel,
 ```
 
 
-## Import the precipitation dataset
+## The precipitation dataset
+
+import the datasets
 
 ```{r}
 weather17_df = 
@@ -63,6 +65,19 @@ weather18_df =
     tmax = tmax / 10) %>%
   select(name, id, everything())
 ```
+
+omit rows without precipitation data and add a variable year
+
+```{r}
+weather17_df = drop_na(weather17_df, prcp)
+
+weather17_df = mutate(weather17_df, year = 2017)
+
+weather18_df = drop_na(weather18_df, prcp)
+
+weather18_df = mutate(weather18_df, year = 2018)
+```
+
 
 
 
