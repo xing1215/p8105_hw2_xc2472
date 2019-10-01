@@ -22,6 +22,18 @@ trash_wheel =
   read_excel(path = "./data/Trash-Wheel-Collection-Totals-8-6-19.xlsx", 
              sheet = "Mr. Trash Wheel", 
              range = "A2:N408")
+
+trash_wheel = janitor::clean_names(trash_wheel)
+
+trash_wheel = drop_na(trash_wheel, dumpster)
+
+trash_wheel = mutate(trash_wheel, 
+  sports_balls = round(sports_balls, digits = 0),
+  sports_balls = as.integer(sports_balls)
+)
 ```
+
+
+
 
 
