@@ -64,8 +64,19 @@ prcp18 = drop_na(prcp18, total)
 prcp18 = mutate(prcp18, year = 2018)
 ```
 
-Combine the precipitation datasets
+Combine the precipitation datasets and convert "month" variable to character variable
 
+```{r}
+prcp_combine = bind_rows(prcp17, prcp18)
+
+prcp_combine = mutate(prcp_combine, 
+                      month = as.character(month))
+```
+
+**Description**
+
+
+# Problem 2
 
 
 
