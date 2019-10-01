@@ -81,8 +81,10 @@ prcp_combine_data =
 pols_month = 
   read_csv(file = "./data/fivethirtyeight_datasets/pols-month.csv") %>% 
   janitor::clean_names() %>% 
-  separate(mon, into = c("year", "month", "day"), sep = "-")
-# haven't change the month to its names yet
+  separate(mon, into = c("year", "month", "day"), sep = "-") %>% 
+  mutate(
+    month = as.numeric(month),
+    month = month.name[month])
 ```
 
 create a president variable and drop the "day" variable
