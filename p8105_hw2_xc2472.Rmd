@@ -38,37 +38,35 @@ trashwheel_data = mutate(trashwheel_data,
 import the datasets
 
 ```{r}
-prcp17 = 
+prcp17_data = 
   read_excel(path = "./data/Trash-Wheel-Collection-Totals-8-6-19.xlsx",
              sheet = "2017 Precipitation",
-             range = "A2:B14")
-prcp17 = janitor::clean_names(prcp17)
+             range = "A2:B14") %>% 
+  janitor::clean_names()
 
-prcp18 = 
+prcp18_data = 
   read_excel(path = "./data/Trash-Wheel-Collection-Totals-8-6-19.xlsx",
              sheet = "2018 Precipitation",
-             range = "A2:B14")
-prcp18 = janitor::clean_names(prcp18)
+             range = "A2:B14") %>% 
+  janitor::clean_names()
 ```
 
 omit rows without precipitation data and add a variable year
 
 ```{r}
-prcp17 = drop_na(prcp17, total)
+prcp17_data = drop_na(prcp17_data, total) %>% 
+  mutate(year = 2017)
 
-prcp17 = mutate(prcp17, year = 2017)
-
-prcp18 = drop_na(prcp18, total)
-
-prcp18 = mutate(prcp18, year = 2018)
+prcp18_data = drop_na(prcp18_data, total) %>% 
+  mutate(year = 2018)
 ```
 
 Combine the precipitation datasets and convert "month" variable to character variable
 
 ```{r}
-prcp_combine = bind_rows(prcp17, prcp18)
-# haven't change the month variable
+prcp_combine_data = bind_rows(prcp17_data, prcp18_data)
 
+# haven't change the variable month
 ```
 
 **Description**
@@ -94,6 +92,7 @@ pols_month = pivot_longer(pols_month,
                           cols = starts_with("prez"), 
                           names_to = "president",
                           names_prefix = "prez_",
+                          values_to = "value"
                           )
 pols_month = select(pols_month, -day)
 ```
@@ -122,7 +121,14 @@ unemploy =
     values_to = "unemploy_rate")
 ```
 
+merge the 3 datasets
 
+haven't ensure all the values are in the same format.
+
+
+# Problem 3
+
+## 
 
 
 
