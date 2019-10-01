@@ -1,5 +1,7 @@
 ---
 title: "p8105_hw2_xc2472"
+author: "Xing Chen"
+date: 2019-10-1
 output: github_document
 ---
 
@@ -7,7 +9,19 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
+library(readxl)
 ```
 
+
+# Problem 1
+
+## import the dataset
+
+```{r}
+trash_wheel = 
+  read_excel(path = "./data/Trash-Wheel-Collection-Totals-8-6-19.xlsx", 
+             sheet = "Mr. Trash Wheel", 
+             range = "A2:N408")
+```
 
 
