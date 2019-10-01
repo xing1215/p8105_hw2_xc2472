@@ -99,6 +99,7 @@ pols_month = pivot_longer(pols_month,
 pols_month = select(pols_month, -day)
 ```
 
+
 ## read and clean the snp.csv
 
 ```{r}
@@ -107,6 +108,19 @@ snp =
   janitor::clean_names() %>% 
   separate(date, into = c("month", "day", "year"), sep = "/") %>% 
   select(year, month, -day, close)
+```
+
+
+## read and clean the unemployment.csv
+
+```{r}
+unemploy = 
+  read_csv(file = "./data/fivethirtyeight_datasets/unemployment.csv") %>% 
+  janitor::clean_names() %>% 
+  pivot_longer(
+    jan:dec,
+    names_to = "month",
+    values_to = "unemploy_rate")
 ```
 
 
