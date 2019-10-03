@@ -77,6 +77,12 @@ prcp_combine_data =
 
 ## read and clean the pols-month.csv
 
+the frile plos_month is read and cleaned. 
+
+the variable `mon` is separated into 3 variables, and the value in `month` varriable is changed to character.
+
+A president variable is created and drop the "day" variable
+
 ```{r}
 pols_month = 
   read_csv(file = "./data/fivethirtyeight_datasets/pols-month.csv") %>% 
@@ -84,14 +90,14 @@ pols_month =
   separate(mon, into = c("year", "month", "day"), sep = "-") %>% 
   mutate(
     month = as.numeric(month),
-    month = month.name[month])
-```
-
-create a president variable and drop the "day" variable
-
-```{r}
-# dont know how to create president
-pols_month = select(pols_month, -day)
+    month = month.name[month]) %>% 
+  pivot_longer(
+    cols = starts_with("prez"),
+    names_to = "president",
+    names_prefix = "prez_",
+    values_to = "time") %>% 
+  filter(time != 0) %>% 
+  select(-day)
 ```
 
 
@@ -118,14 +124,7 @@ unemploy =
     values_to = "unemploy_rate")
 ```
 
-merge the 3 datasets
 
-haven't ensure all the values are in the same format.
-
-
-# Problem 3
-
-## 
 
 
 
