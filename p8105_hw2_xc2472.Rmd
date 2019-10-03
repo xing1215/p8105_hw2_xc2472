@@ -103,11 +103,20 @@ pols_month =
 
 ## read and clean the snp.csv
 
+the file snp is read and cleaned.
+
+the variable `date` is separated into 3 variables `year`, `month`, and `day`
+then, the variable `day` is dropped and the dataset is arranged so that `year` and
+`month` is leading the column, for consistency across datasets. 
+
 ```{r}
 snp = 
   read_csv(file = "./data/fivethirtyeight_datasets/snp.csv") %>% 
   janitor::clean_names() %>% 
   separate(date, into = c("month", "day", "year"), sep = "/") %>% 
+  mutate(
+    month = as.numeric(month),
+    month = month.name[month]) %>% 
   select(year, month, -day, close)
 ```
 
