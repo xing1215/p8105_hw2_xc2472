@@ -94,7 +94,7 @@ the variable `mon` is separated into 3 variables, and the value in `month` varri
 
 A president variable is created and drop the "day" variable
 
-```{r}
+```{r, message=FALSE}
 pols_month = 
   read_csv(file = "./data/fivethirtyeight_datasets/pols-month.csv") %>% 
   janitor::clean_names() %>% 
@@ -120,7 +120,7 @@ the variable `date` is separated into 3 variables `year`, `month`, and `day`
 then, the variable `day` is dropped and the dataset is arranged so that `year` and
 `month` is leading the column, for consistency across datasets. 
 
-```{r}
+```{r, message=FALSE}
 snp = 
   read_csv(file = "./data/fivethirtyeight_datasets/snp.csv") %>% 
   janitor::clean_names() %>% 
@@ -179,7 +179,7 @@ the unemployment rate of each month for each associated year.
 read and clean teh popular_baby_names datasets and change the inconsistency values within the 
 variable ethnicity
 
-```{r}
+```{r, message=FALSE}
 baby_names = 
   read_csv(file = "./data/Popular_Baby_Names.csv") %>% 
   janitor::clean_names() %>% 
@@ -204,6 +204,7 @@ olivia_female_rank =
   pivot_wider(
     names_from = "year_of_birth",
     values_from = "rank")
+knitr::kable(olivia_female_rank)
 ```
 
 create a table indicating the popular name among male children, 
@@ -218,6 +219,7 @@ male_name =
   pivot_wider(
     names_from = "year_of_birth",
     values_from = "childs_first_name")
+knitr::kable(male_name)
 ```
 
 A scatter plot is created for male, white non-hispanic children born in 2016. 
@@ -231,7 +233,3 @@ ggplot(male_white_nonhisp, aes(x = rank, y = count)) +
   geom_point() +
   geom_smooth(se = FALSE)
 ```
-
-
-
-
