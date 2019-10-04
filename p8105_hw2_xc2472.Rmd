@@ -72,10 +72,10 @@ prcp_combine_data =
 
 **Description**
 
-There are `r nrow(trashwheel_data)` observations in the trashwheel dataset. The variable 
-date and weight_tons represents how much trash were collected at that day. For example, in 
+There are `r nrow(trashwheel_data)` observations in the `trashwheel` dataset. The variable 
+`date` and `weight_tons` represents how much trash were collected at that day. For example, in 
 the date 2014-5-16, 4.31 tons of trash were collected. 
-There are `r nrow(prcp_combine_data)` observation in the trashwheel dataset. The variable 
+There are `r nrow(prcp_combine_data)` observation in the `prcp_combine` dataset. The variable 
 `total` represents the total precipitation, measured in inch. For example, in Janurary, 
 2017, the total precipitation is 2.34 inches. 
 
@@ -157,6 +157,8 @@ problem2_join = left_join(problem2_join, unemploy, by = c("year", "month"))
 ```
 
 **description**
+
+
 
 
 # Problem 3
