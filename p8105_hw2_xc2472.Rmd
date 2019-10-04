@@ -35,7 +35,7 @@ trashwheel_data = mutate(trashwheel_data,
 
 ## The precipitation dataset
 
-import the datasets
+Import the datasets
 
 ```{r}
 prcp17_data = 
@@ -51,7 +51,7 @@ prcp18_data =
   janitor::clean_names()
 ```
 
-omit rows without precipitation data and add a variable year
+Omit rows without precipitation data and add a variable year
 
 ```{r}
 prcp17_data = drop_na(prcp17_data, total) %>% 
@@ -73,11 +73,14 @@ prcp_combine_data =
 **Description**
 
 There are `r nrow(trashwheel_data)` observations in the `trashwheel` dataset. The variable 
-`date` and `weight_tons` represents how much trash were collected at that day. For example, in 
-the date 2014-5-16, 4.31 tons of trash were collected. 
-There are `r nrow(prcp_combine_data)` observation in the `prcp_combine` dataset. The variable 
-`total` represents the total precipitation, measured in inch. For example, in Janurary, 
-2017, the total precipitation is 2.34 inches. 
+`date` and `dumpster` represents how much dumpsters were filled at that day. 
+For example, on the date 2014-5-16, 3 dumpsters of trash were collected. The number of 
+dumpsters that were collected depends on the amount of precipitation. When there is a huge 
+storm, a dumpster can be easily filled. 
+
+There are `r nrow(prcp_combine_data)` observation in the `prcp_combine` dataset. The 
+variable `total` represents the total precipitation, measured in inch. For example, in 
+Janurary, 2017, the total precipitation is 2.34 inches. 
 
 The total precipitation in 2018 is `r sum(pull(prcp18_data, total))`. 
 
