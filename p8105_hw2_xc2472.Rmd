@@ -221,7 +221,8 @@ male_name =
   filter(rank == 1) %>% 
   pivot_wider(
     names_from = "year_of_birth",
-    values_from = "childs_first_name")
+    values_from = "childs_first_name") %>% 
+  select(-rank)
 knitr::kable(male_name)
 ```
 
