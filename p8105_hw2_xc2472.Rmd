@@ -156,9 +156,20 @@ problem2_join = left_join(pols_month, snp, by = c("year", "month"))
 problem2_join = left_join(problem2_join, unemploy, by = c("year", "month"))
 ```
 
-**description**
+## description
 
+In dataset `pols-month`, the number of national politicians who democratic or republican 
+on the associated date. In the dataset `snp`, the closing value of S&P stock index was 
+collected on the associated date. In the dataset `unemployment`, the percentage of 
+unemployment of each month for each associated year was provided. 
 
+The dimensions of `pols-month`, `snp`, `unemplyment`, and `combined dataset` is (`r dim(pols_month)`), (`r dim(snp)`), (`r dim(unemploy)`), and (`r dim(problem2_join)`), respectively. 
+
+The range of year in each dataset is (`r range(as.numeric(pols_month$year))`), (`r range(as.numeric(snp$year))`), (`r range(as.numeric(unemploy$year))`), and (`r range(as.numeric(problem2_join$year))`), respectively. 
+
+The key variables of these 3 datasets include the associated date, which has been 
+separated into two variables `year` and `month`, the closing value of S&P stock index, and 
+the unemployment rate of each month for each associated year. 
 
 
 # Problem 3
